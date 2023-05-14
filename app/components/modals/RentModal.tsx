@@ -52,7 +52,7 @@ const RentModal = ({}: RentModalProps) => {
 	const bathroomCount = watch('bathroomCount');
 	const imageSrc = watch('imageSrc');
 
-	const Map = useMemo(
+	const TheMap = useMemo(
 		() => dynamic(() => import('../Map'), { ssr: false }),
 		[location]
 	);
@@ -146,7 +146,7 @@ const RentModal = ({}: RentModalProps) => {
 					value={location}
 					onChange={(value) => setCustomValue('location', value)}
 				/>
-				<Map center={location?.latlng} />
+				<TheMap center={location?.latlng} />
 			</div>
 		);
 	}
