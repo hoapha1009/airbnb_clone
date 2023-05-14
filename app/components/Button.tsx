@@ -3,6 +3,7 @@
 import { IconType } from 'react-icons';
 
 interface ButtonProps {
+	className?: string;
 	label: string;
 	onClick: (e: React.MouseEvent<HTMLButtonElement>) => void;
 	disabled?: boolean;
@@ -12,6 +13,7 @@ interface ButtonProps {
 }
 
 const Button = ({
+	className = '',
 	label,
 	onClick,
 	disabled,
@@ -31,6 +33,7 @@ const Button = ({
             hover:opacity-80
             transition
             w-full
+			${className}
             ${
 				outline
 					? 'bg-white text-black border-black'

@@ -37,6 +37,7 @@ const Input = ({
 				disabled={disabled}
 				{...register(id, {
 					required,
+					...(formatPrice ? { min: 1 } : {}),
 				})}
 				placeholder=" "
 				type={type}

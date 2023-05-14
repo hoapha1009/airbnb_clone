@@ -8,6 +8,7 @@ import { useCallback, useState } from 'react';
 import { AiOutlineMenu } from 'react-icons/ai';
 import Avatar from './Avatar';
 import MenuItem from './MenuItem';
+import useRentModal from '@/app/hooks/useRentModal';
 
 interface UserMenuProps {
 	currentUser?: SafeUser | null;
@@ -16,21 +17,35 @@ interface UserMenuProps {
 const UserMenu = ({ currentUser }: UserMenuProps) => {
 	const registerModal = useRegisterModal();
 	const loginModal = useLoginModal();
+	const rentModal = useRentModal();
 	const [isOpen, setIsOpen] = useState(false);
 
 	const toggleOpen = useCallback(() => {
 		setIsOpen((val) => !val);
 	}, []);
 
+	const onRent = useCallback(() => {
+		if (!currentUser) {
+			loginModal.onOpen();
+			return;
+		}
+
+		// Open Rent Modal
+		rentModal.onOpen();
+	}, [currentUser, loginModal, rentModal]);
+
 	return (
 		<div className="relative">
 			<div className="flex flex-row items-center gap-3">
-				<div className="hidden px-4 py-3 text-sm font-semibold transition rounded-full md:block hover:bg-neutral-100 cupture-pointer">
+				<div
+					onClick={onRent}
+					className="hidden px-4 py-3 text-sm font-semibold transition rounded-full cursor-pointer md:block hover:bg-neutral-100"
+				>
 					Airbnb your home
 				</div>
 				<div
 					onClick={toggleOpen}
-					className="p-4 md:py-1 md:px-2 border-[1px] border-neutral-200 flex flex-row items-center gap-3 rounded-full cursor-pointer hover:shadow-sm transition"
+					className="p-4 md:py-1 md:px-2 border-[1px] border-neutral-200 flex flex-row items-center gap-3 rounded-full cursor-pointer hover:shadow-md transition"
 				>
 					<AiOutlineMenu />
 					<div className="hidden md:block">
@@ -58,7 +73,7 @@ const UserMenu = ({ currentUser }: UserMenuProps) => {
 									label="My properties"
 								/>
 								<MenuItem
-									onClick={() => {}}
+									onClick={rentModal.onOpen}
 									label="Airbnb my home"
 								/>
 								<MenuItem

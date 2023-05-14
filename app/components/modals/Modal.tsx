@@ -75,7 +75,7 @@ const Modal = ({
 							<div className="flex items-center p-6 rounded-t justify-center relative border-b-[1px]">
 								<button
 									onClick={handleClose}
-									className="absolute p-1 transition border-0 hover:opacity-70 left-9"
+									className="absolute p-1.5 transition border-0 rounded-full hover:opacity-70 left-9 hover:bg-neutral-200"
 								>
 									<IoMdClose size={18} />
 								</button>

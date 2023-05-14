@@ -87,12 +87,14 @@ const RegisterModal = ({}: RegisterModalProps) => {
 				label="Continue with Google"
 				icon={FcGoogle}
 				onClick={() => signIn('google')}
+				className="hover:bg-neutral-100"
 			/>
 			<Button
 				outline
 				label="Continue with Github"
 				icon={AiFillGithub}
 				onClick={() => signIn('github')}
+				className="hover:bg-neutral-100"
 			/>
 			<div className="mt-4 font-light text-center text-neutral-500">
 				<div className="flex flex-row items-center justify-center gap-2">

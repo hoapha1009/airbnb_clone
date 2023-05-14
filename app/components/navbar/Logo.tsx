@@ -10,11 +10,13 @@ const Logo = ({}: LogoProps) => {
 
 	return (
 		<Image
+			priority
 			alt="Logo"
 			className="hidden cursor-pointer md:block"
 			height={100}
 			src="/images/logo.png"
 			width={100}
+			onClick={() => router.push('/')}
 		/>
 	);
 };
