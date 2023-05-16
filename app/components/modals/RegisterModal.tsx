@@ -3,7 +3,7 @@
 import useRegisterModal from '@/app/hooks/useRegisterModal';
 import axios from 'axios';
 import { signIn } from 'next-auth/react';
-import { useState } from 'react';
+import { useCallback, useState } from 'react';
 import { FieldValues, SubmitHandler, useForm } from 'react-hook-form';
 import toast from 'react-hot-toast';
 import { AiFillGithub } from 'react-icons/ai';
@@ -12,11 +12,13 @@ import Button from '../Button';
 import Heading from '../Heading';
 import Input from '../inputs/Input';
 import Modal from './Modal';
+import useLoginModal from '@/app/hooks/useLoginModal';
 
 interface RegisterModalProps {}
 
 const RegisterModal = ({}: RegisterModalProps) => {
 	const registerModal = useRegisterModal();
+	const loginModal = useLoginModal();
 	const [isLoading, setIsLoading] = useState(false);
 
 	const {
@@ -31,6 +33,11 @@ const RegisterModal = ({}: RegisterModalProps) => {
 		},
 	});
 
+	const onToggle = useCallback(() => {
+		registerModal.onClose();
+		loginModal.onOpen();
+	}, [loginModal, registerModal]);
+
 	const onSubmit: SubmitHandler<FieldValues> = async (data) => {
 		setIsLoading(true);
 
@@ -38,6 +45,7 @@ const RegisterModal = ({}: RegisterModalProps) => {
 			.post('/api/register', data)
 			.then(() => {
 				registerModal.onClose();
+				loginModal.onOpen();
 			})
 			.catch((err) => {
 				console.log(err);
@@ -100,7 +108,7 @@ const RegisterModal = ({}: RegisterModalProps) => {
 				<div className="flex flex-row items-center justify-center gap-2">
 					<div className="">Already have an account?</div>
 					<div
-						onClick={registerModal.onClose}
+						onClick={onToggle}
 						className="cursor-pointer text-neutral-800 hover:underline"
 					>
 						Log in

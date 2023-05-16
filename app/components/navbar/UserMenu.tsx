@@ -66,11 +66,11 @@ const UserMenu = ({ currentUser }: UserMenuProps) => {
 									label="My trips"
 								/>
 								<MenuItem
-									onClick={() => {}}
+									onClick={() => router.push('/favorites')}
 									label="My favorites"
 								/>
 								<MenuItem
-									onClick={() => {}}
+									onClick={() => router.push('/reservations')}
 									label="My reservations"
 								/>
 								<MenuItem
@@ -82,7 +82,10 @@ const UserMenu = ({ currentUser }: UserMenuProps) => {
 									label="Airbnb my home"
 								/>
 								<MenuItem
-									onClick={() => signOut()}
+									onClick={() => {
+										signOut();
+										router.push('/');
+									}}
 									label="Log out"
 								/>
 							</>

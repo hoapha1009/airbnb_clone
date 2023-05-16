@@ -20,7 +20,7 @@ const initialDateRange = {
 	key: 'selection',
 };
 
-interface ListingClientProps {
+interface ListingsClientProps {
 	reservations?: SafeReservation[];
 	listing: SafeListing & {
 		user: SafeUser;
@@ -28,11 +28,11 @@ interface ListingClientProps {
 	currentUser: SafeUser | null;
 }
 
-const ListingClient = ({
+const ListingsClient = ({
 	listing,
 	reservations = [],
 	currentUser,
-}: ListingClientProps) => {
+}: ListingsClientProps) => {
 	const router = useRouter();
 	const loginModal = useLoginModal();
 
@@ -139,4 +139,4 @@ const ListingClient = ({
 	);
 };
 
-export default ListingClient;
+export default ListingsClient;
