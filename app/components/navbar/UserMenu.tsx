@@ -6,7 +6,7 @@ import { SafeUser } from '@/app/types';
 import { signOut } from 'next-auth/react';
 import { useCallback, useState } from 'react';
 import { AiOutlineMenu } from 'react-icons/ai';
-import Avatar from './Avatar';
+import Avatar from '../Avatar';
 import MenuItem from './MenuItem';
 import useRentModal from '@/app/hooks/useRentModal';
 
