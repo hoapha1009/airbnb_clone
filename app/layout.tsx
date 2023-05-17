@@ -11,7 +11,8 @@ import SearchModal from './components/modals/SearchModal';
 
 export const metadata = {
 	title: 'Airbnb Clone',
-	description: 'Airbnb clone',
+	description:
+		'This is a repository for a Full Stack Airbnb Clone with Next.js 13 App Router: React, Tailwind, Prisma, MongoDB, NextAuth.',
 };
 
 const font = Nunito({
