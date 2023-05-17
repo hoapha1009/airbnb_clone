@@ -22,6 +22,27 @@ const UserMenu = ({ currentUser }: UserMenuProps) => {
 	const rentModal = useRentModal();
 	const [isOpen, setIsOpen] = useState(false);
 
+	const links = {
+		authenticated: [
+			{ href: '/trips', label: 'My trips' },
+			{ href: '/favorites', label: 'My favorites' },
+			{ href: '/reservations', label: 'My reservations' },
+			{ href: '/properties', label: 'My properties' },
+			{ action: () => rentModal.onOpen(), label: 'Airbnb my home' },
+			{
+				action: () => {
+					signOut();
+					router.push('/');
+				},
+				label: 'Logout',
+			},
+		],
+		unAuthenticated: [
+			{ action: () => loginModal.onOpen(), label: 'Login' },
+			{ action: () => registerModal.onOpen(), label: 'Sign up' },
+		],
+	};
+
 	const toggleOpen = useCallback(() => {
 		setIsOpen((val) => !val);
 	}, []);
