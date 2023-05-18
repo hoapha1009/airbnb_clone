@@ -24,7 +24,6 @@ const Input = ({
 	register,
 	errors,
 }: InputProps) => {
-	console.log('🚀 ~ file: Input.tsx:27 ~ errors:', errors);
 	return (
 		<div className="w-full">
 			<div className="relative">
@@ -38,7 +37,7 @@ const Input = ({
 					id={id}
 					disabled={disabled}
 					{...register(id, {
-						required: 'Required',
+						required,
 						...(formatPrice
 							? {
 									min: {
